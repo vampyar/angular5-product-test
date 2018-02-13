@@ -12,11 +12,19 @@ import { AppRoutingModule } from './app.routing';
 import { Level0Guard } from './guards/level0.guard';
 import { UserService } from './providers/user/user.service';
 import { AuthGuard } from './guards/auth.guard';
-import {environment} from "../environments/environment";
+import { environment } from '../environments/environment';
 import { HttpClientService } from './providers/http/http-client.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { GlobalErrorHandler } from "./providers/logging/global-error.service";
+import { GlobalErrorHandler } from './providers/logging/global-error.service';
+import { ProductsComponent } from './products/products.component';
+import { ProductsListComponent } from './products/products-list/products-list.component';
+import { ProductItemComponent } from './products/product-item/product-item.component';
 
+import { ProductsService } from './products/products.service';
+import { ProductComponent } from './products/product/product.component';
+import { CartComponent } from './products/cart/cart.component';
+import { AddToCartComponent } from './products/cart/add-to-cart/add-to-cart.component';
+import {CartService} from './products/cart/cart.service';
 
 const GUARDS = [
     {
@@ -35,7 +43,13 @@ const GUARDS = [
   declarations: [
     AppComponent,
     FullLayoutComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProductsComponent,
+    ProductsListComponent,
+    ProductItemComponent,
+    ProductComponent,
+    CartComponent,
+    AddToCartComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +80,8 @@ const GUARDS = [
       },
       ToasterService,
       UserService,
+      ProductsService,
+      CartService,
       ...GUARDS
   ],
   bootstrap: [

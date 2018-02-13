@@ -9,10 +9,11 @@ export function LocalStorage(
     // get and set methods
     Object.defineProperty(target, decoratedPropertyName, {
         get: function () {
-            return localStorage.getItem(decoratedPropertyName) || '';
+            const value = localStorage.getItem(decoratedPropertyName);
+            return value && JSON.parse(localStorage.getItem(decoratedPropertyName)) || '';
         },
         set: function (newValue) {
-            localStorage.setItem(decoratedPropertyName, newValue);
+            localStorage.setItem(decoratedPropertyName, JSON.stringify(newValue));
         }
     });
 }
